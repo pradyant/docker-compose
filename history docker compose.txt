@@ -1,0 +1,101 @@
+docker run --name mysql-cont -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass -e MYSQL_RANDOM_ROOT_PASSWORD: '1'  -d mysql:5.7
+
+      MYSQL_DATABASE=exampledb
+      MYSQL_USER=exampleuser
+      MYSQL_PASSWORD=examplepass
+
+
+
+     -e WORDPRESS_DB_HOST=mysql-cont -e WORDPRESS_DB_USER: exampleuser -e WORDPRESS_DB_PASSWORD: examplepass -e WORDPRESS_DB_NAME: exampledb
+
+docker run --name wp-cont --link mysql-cont:mysql -p 8000:80  -e WORDPRESS_DB_USER: exampleuser -e WORDPRESS_DB_PASSWORD: examplepass -e WORDPRESS_DB_NAME: exampledb  -d wp-image
+********************************
+    1  docker ps
+    2  docker logs e494f5054f76
+    3  docker ps
+    4  docker exec -it e494f5054f76 -- curl localhost:8000
+    5  docker exec -it e494f5054f76 /bin/bash
+    6  docker stop $(docker ps -a -q)
+    7  docker rm $(docker ps -a -q)
+    8  docker run --name some-wordpress -p 8080:80 -d wordpress
+    9  docker ps
+   10  curl localhost:80
+   11  docker logs 831e7325a68d
+   12  docker exec -it 831e7325a68d -- curl 127.0.0.1
+   13  docker exec -it 831e7325a68d -- curl 127.0.0.1:80000
+   14  docker exec -it 831e7325a68d -- curl 127.0.0.1:8000
+   15  docker ps
+   16  curl localhost:8080
+   17  docker ps
+   18  docker rm some-wordpress
+   19  docker stop  some-wordpress
+   20  docker rm  some-wordpress
+   21  docker run --name mysql-cont -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass -d mysql:5.7
+   22  docker ps
+   23  docker ps -a
+   24  docker  logs 4f894e2302ca
+   25  docker run --name mysql-cont -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass MYSQL_ROOT_PASSWORD=testfdg -d mysql:5.7
+   26  docker run --name mysql-cont -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass -e MYSQL_ROOT_PASSWORD=testfdg -d mysql:5.7
+   27  docker run --name mysql-cont1 -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass -e MYSQL_ROOT_PASSWORD=testfdg -d mysql:5.7
+   28  docker ps
+   29  docker run --name wp-cont --link mysql-cont1:mysql -p 8000:80 -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass MYSQL_ROOT_PASSWORD=testfdg -d wp-image
+   30  docker run --name wp-cont --link mysql-cont1:mysql -p 8000:80 -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass -e MYSQL_ROOT_PASSWORD=testfdg -d wp-image
+   31  docker run --name wp-cont --link mysql-cont1:mysql -p 8000:80 -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass -e MYSQL_ROOT_PASSWORD=testfdg -d wordpress
+   32  docker ps
+   33  curl localhost:8000
+   34*
+   35  #docker ps
+   36  docker stop $(docker ps -a -q)
+   37  docker rm $(docker ps -a -q)
+   38  docker run --name mysql-cont -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass -e MYSQL_RANDOM_ROOT_PASSWORD: '1'  -d mysql:5.7
+   39  docker run --name mysql-cont -e MYSQL_DATABASE=exampledb -e MYSQL_USER=exampleuser -e MYSQL_PASSWORD=examplepass -e MYSQL_RANDOM_ROOT_PASSWORD='1'  -d mysql:5.7
+   40  docker ps
+   41  docker run --name wp-cont --link mysql-cont:mysql -p 8000:80  -e WORDPRESS_DB_USER: exampleuser -e WORDPRESS_DB_PASSWORD: examplepass -e WORDPRESS_DB_NAME: exampledb  -d wp-image
+   42  docker run --name wp-cont --link mysql-cont:mysql -p 8000:80  -e WORDPRESS_DB_USER=exampleuser -e WORDPRESS_DB_PASSWORD=examplepass -e WORDPRESS_DB_NAME=exampledb  -d wp-image
+   43  docker run --name wp-cont --link mysql-cont:mysql -p 8000:80  -e WORDPRESS_DB_USER=exampleuser -e WORDPRESS_DB_PASSWORD=examplepass -e WORDPRESS_DB_NAME=exampledb  -d wordpress
+   44  docker ps
+   45  curl localhost:8000
+   46  docker logs 18b9ecb74c39
+   47  docker ps
+   48  docker rm 18b9ecb74c39
+   49  docker run --name wp-cont --link mysql-cont:mysql -p 8000:80  -e WORDPRESS_DB_USER=exampleuser -e WORDPRESS_DB_PASSWORD=examplepass -e WORDPRESS_DB_NAME=exampledb     -e WORDPRESS_DB_HOST=mysql-cont    -d wordpress
+   50  docker ps
+   51  docker exec -it 6273945ecbcb -- curl localhost:80
+   52  docker exec -it 6273945ecbcb -- bash
+   53  docker exec -it 6273945ecbcb /bin/bash
+   54  vim test.yaml
+   55  #docker-compose up -d
+   56  mv test.yaml docker-compose.yaml
+   57  docker-compose up -d .
+   58  sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+   59  sudo chmod +x /usr/local/bin/docker-compose
+   60  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+   61  docker-compose up -d .
+   62  ifconfig | grep docker
+   63  docker-compose --version
+   64  vim docker-compose.yaml
+   65  docker-compose up -d .
+   66  docker-compose up -d
+   67  docker ps
+   68  curl localhost:8080
+   69  docker logs d83fefe1b562
+   70  docker exec -it d83fefe1b562 /bin/bash
+   71  curl localhost:8080
+   72  docker ps
+   73  docker logs root_wordpress_1
+   74  vim docker-compose.yaml
+   75  docker stop $(docker ps -a -q)
+   76  docker rm  $(docker ps -a -q)
+   77  docker-compose up -d
+   78  docker ps
+   79  curl localhost :8080
+   80  curl localhost:8080
+   81  docker exec -it bb7b9187cd92 /bin/bash
+   82  vim docker-compose.yaml
+   83  curl localhost:8080
+   84  vim docker-compose.yaml
+   85  docker-compose up -d
+   86  curl localhost:8081
+   87  curl localhost:8080
+   88  curl localhost:8081
+   89  history
